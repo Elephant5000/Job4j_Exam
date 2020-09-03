@@ -1,3 +1,27 @@
 <resources>
     <string name="app_name">Job4j Exam</string>
+    <string name="objectName">Имя Объекта</string>
+    <string name="street">Улица и дом</string>
+    <string name="fIO">ФИО заказчика</string>
+    <string name="temperature">Температура воздуха</string>
+    <string name="humidity">Влажность воздуха</string>
+    <string name="pressure">Атмосферное давление</string>
+    <string name="reportNumber">Номер отчета</string>
+    <string name="city">Город</string>
+    <string name="date">Дата</string>
+    <string name="domain_prompt">Выберите область</string>
+    <string name="exp_date">Дата проведения испытания</string>
+    <string-array name="domain_arrays">
+        <item>Выберите область</item>
+        <item>Московская</item>
+        <item>СПб</item>
+    </string-array>
+    <string name="date_prompt">Выберите дату</string>
+    <string-array name="date_arrays">
+        <item>Выберите дату</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
 </resources>
