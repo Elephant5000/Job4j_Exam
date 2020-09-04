@@ -1,3 +1,51 @@
 <resources>
     <string name="app_name">Job4j Exam</string>
+    <string name="objectName">Имя Объекта</string>
+    <string name="street">Улица и дом</string>
+    <string name="fIO">ФИО заказчика</string>
+    <string name="temperature">Температура воздуха</string>
+    <string name="humidity">Влажность воздуха</string>
+    <string name="pressure">Атмосферное давление</string>
+    <string name="reportNumber">Номер отчета</string>
+    <string name="city">Город</string>
+    <string name="date">Дата</string>
+    <string name="domain_prompt">Выберите область</string>
+    <string name="exp_date">Дата проведения испытания</string>
+    <string-array name="domain_arrays">
+        <item>Выберите область</item>
+        <item>Московская</item>
+        <item>СПб</item>
+    </string-array>
+    <string name="dateDay_prompt">Число</string>
+    <string-array name="dateDay_arrays">
+        <item>Число</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+    <string name="dateMonth_prompt">Месяц</string>
+    <string-array name="dateMonth_arrays">
+        <item>Месяц</item>
+        <item>январь</item>
+        <item>Февраль</item>
+        <item>Март</item>
+        <item>Апрель</item>
+    </string-array>
+    <string name="dateYear_prompt">Год</string>
+    <string name="Next">Далее</string>
+    <string name="Prev">Назад</string>
+    <string-array name="dateYear_arrays">
+        <item>Год</item>
+        <item>2020</item>
+        <item>2021</item>
+        <item>2022</item>
+    </string-array>
+>>>>>>> Stashed changes
 </resources>
