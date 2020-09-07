@@ -43,10 +43,11 @@
 
             <TextView
                 android:id="@+id/textViewObjectName"
+                style="@style/CustomText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:width="120dp"
+                android:width="140dp"
                 android:text="@string/objectName" />
 
             <EditText
@@ -68,10 +69,11 @@
 
             <TextView
                 android:id="@+id/textViewStreet"
+                style="@style/CustomText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:width="120dp"
+                android:width="140dp"
                 android:text="@string/street" />
 
             <EditText
@@ -88,15 +90,15 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/textViewFIO"
+                style="@style/CustomText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:width="120dp"
+                android:width="140dp"
                 android:text="@string/fIO" />
 
             <EditText
@@ -104,10 +106,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:autofillHints=""
                 android:ems="10"
                 android:hint="@string/fIO"
-                android:inputType="textPersonName"
-                android:autofillHints="" />
+                android:inputType="textPersonName" />
         </LinearLayout>
 
         <LinearLayout
@@ -118,10 +120,11 @@
 
             <TextView
                 android:id="@+id/textViewTemperature"
+                style="@style/CustomText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:width="120dp"
+                android:width="140dp"
                 android:text="@string/temperature" />
 
             <EditText
@@ -143,10 +146,11 @@
 
             <TextView
                 android:id="@+id/textViewHumidity"
+                style="@style/CustomText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:width="120dp"
+                android:width="140dp"
                 android:text="@string/humidity" />
 
             <EditText
@@ -168,10 +172,11 @@
 
             <TextView
                 android:id="@+id/textViewPressure"
+                style="@style/CustomText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:width="120dp"
+                android:width="140dp"
                 android:text="@string/pressure" />
 
             <EditText
@@ -193,10 +198,11 @@
 
             <TextView
                 android:id="@+id/textViewReportNumber"
+                style="@style/CustomText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:width="120dp"
+                android:width="140dp"
                 android:text="@string/reportNumber" />
 
             <EditText
@@ -218,6 +224,7 @@
 
             <TextView
                 android:id="@+id/textViewDate"
+                style="@style/CustomText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -262,6 +269,7 @@
 
             <Button
                 android:id="@+id/buttonPrev"
+                style="@style/ExamButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -269,6 +277,7 @@
 
             <Button
                 android:id="@+id/buttonNext"
+                style="@style/ExamButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

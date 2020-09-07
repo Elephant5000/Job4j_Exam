@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Job4j Exam</string>
+    <string name="objectName">Object Name</string>
+    <string name="street">Street</string>
+    <string name="fIO">Name customer</string>
+    <string name="temperature">Temperature</string>
+    <string name="humidity">Humidity</string>
+    <string name="pressure">Atmospheric pressure</string>
+    <string name="reportNumber">Report number</string>
+    <string name="city">City</string>
+    <string name="date">Date</string>
+    <string name="domain_prompt">Select City</string>
+    <string name="exp_date">Date of the test</string>
+    <string name="dateDay_prompt">Date</string>
+    <string name="dateMonth_prompt">Month</string>
+    <string name="dateYear_prompt">Year</string>
+    <string name="Next">Next</string>
+    <string name="Prev">Prev</string>
+</resources>
