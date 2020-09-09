@@ -6,7 +6,7 @@
     <string name="temperature">Температура воздуха</string>
     <string name="humidity">Влажность воздуха</string>
     <string name="pressure">Атмосферное давление</string>
-    <string name="reportNumber">Номер отчета</string>
+    <string name="reportNumber">Номер отчета</string>Button
     <string name="city">Город</string>
     <string name="date">Дата</string>
     <string name="domain_prompt">Выберите область</string>
@@ -47,5 +47,6 @@
         <item>2021</item>
         <item>2022</item>
     </string-array>
->>>>>>> Stashed changes
+    <string name="Help">Подсказка</string>
+    <string name="back">Назад</string>
 </resources>

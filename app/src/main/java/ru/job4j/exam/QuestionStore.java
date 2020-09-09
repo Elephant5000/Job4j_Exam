@@ -18,7 +18,7 @@ public final class QuestionStore {
                 Arrays.asList(
                         new Option(1, "1.1"), new Option(2, "1.2"),
                         new Option(3, "1.3"), new Option(4, "1.4")
-                ), 4
+                ), 1
         ));
         questions.add(new Question(
                 2, "What is Java Virtual Machine?",

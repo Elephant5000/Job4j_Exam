@@ -17,4 +17,6 @@
     <string name="dateYear_prompt">Year</string>
     <string name="Next">Next</string>
     <string name="Prev">Prev</string>
+    <string name="Help">Help</string>
+    <string name="back">Назад</string>
 </resources>

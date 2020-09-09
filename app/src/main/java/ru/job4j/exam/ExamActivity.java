@@ -7,6 +7,8 @@ package ru.job4j.exam;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,15 +18,13 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.Arrays;
-import java.util.List;
-
 public class ExamActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
     private int scrRotationCount = 0;
     private int position = 0;
     private final QuestionStore store = QuestionStore.getInstance();
+    public static final String HINT_FOR = "hint_for";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +38,8 @@ public class ExamActivity extends AppCompatActivity {
         next.setOnClickListener(this::nextBtn);
         final Button previous = findViewById(R.id.previous);
         previous.setOnClickListener(this::prevBtn);
+        final Button help = findViewById(R.id.help);
+        help.setOnClickListener(this::helpBtn);
     }
 
     @Override
@@ -88,9 +90,14 @@ public class ExamActivity extends AppCompatActivity {
         final RadioGroup variants = findViewById(R.id.variants);
         if (variants.getCheckedRadioButtonId() != -1) {
             saveAnswer();
-            showAnswer();
-            position++;
-            fillForm();
+            if (position < store.size() - 1) {
+                showAnswer();
+                position++;
+                fillForm();
+            } else {
+                Intent intent = new Intent(ExamActivity.this, ResultActivity.class);
+                startActivity(intent);
+            }
         }
     }
 
@@ -103,9 +110,15 @@ public class ExamActivity extends AppCompatActivity {
         }
     }
 
+    private void helpBtn(View view) {
+        Intent intent = new Intent(ExamActivity.this, HintActivity.class);
+        intent.putExtra(HINT_FOR, position);
+        startActivity(intent);
+    }
+
     private void fillForm() {
         findViewById(R.id.previous).setEnabled(position != 0);
-        findViewById(R.id.next).setEnabled(position != store.size() - 1);
+        //findViewById(R.id.next).setEnabled(position != store.size() - 1);
         final TextView text = findViewById(R.id.question);
         Question question = this.store.get(this.position);
         text.setText(question.getText());
