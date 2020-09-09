@@ -118,7 +118,6 @@ public class ExamActivity extends AppCompatActivity {
 
     private void fillForm() {
         findViewById(R.id.previous).setEnabled(position != 0);
-        //findViewById(R.id.next).setEnabled(position != store.size() - 1);
         final TextView text = findViewById(R.id.question);
         Question question = this.store.get(this.position);
         text.setText(question.getText());

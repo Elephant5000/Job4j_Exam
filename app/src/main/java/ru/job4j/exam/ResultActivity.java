@@ -16,10 +16,12 @@ public class ResultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.result_activity);
         for (int index = 0; index < store.size(); index ++) {
-
-            TextView question = findViewById(getResources().getIdentifier("answerTV" + String.valueOf(index), "id", this.getPackageName()));
-            question.setText(store.get(index).getAnswer());
-
+            TextView question = findViewById(getResources().getIdentifier("questionTV" + String.valueOf(index), "id", this.getPackageName()));
+            TextView answer = findViewById(getResources().getIdentifier("answerTV" + String.valueOf(index), "id", this.getPackageName()));
+            TextView userAnswer = findViewById(getResources().getIdentifier("userAnswerTV" + String.valueOf(index), "id", this.getPackageName()));
+            question.setText(store.get(index).getText());
+            answer.setText(String.valueOf(store.get(index).getAnswer()));
+            userAnswer.setText(String.valueOf(store.get(index).getUserAnswer()));
         }
         Button back = findViewById(R.id.back);
         back.setOnClickListener(this::backBtn);
