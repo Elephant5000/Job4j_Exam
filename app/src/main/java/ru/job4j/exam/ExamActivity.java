@@ -56,34 +56,10 @@ public class ExamActivity extends AppCompatActivity {
         position = (savedInstanceState == null) ? 0: savedInstanceState.getInt("position");
         Log.d(TAG, "OnCreate" + "       Rotation count - " + scrRotationCount);
         this.fillForm();
-        Button next = findViewById(R.id.next);
-        final RadioGroup variants = findViewById(R.id.variants);
-        next.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (variants.getCheckedRadioButtonId() != -1) {
-                            saveAnswer();
-                            showAnswer();
-                            position++;
-                            fillForm();
-                        }
-                    }
-                }
-        );
+        final Button next = findViewById(R.id.next);
+        next.setOnClickListener(this::nextBtn);
         final Button previous = findViewById(R.id.previous);
-        previous.setOnClickListener(
-            new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (variants.getCheckedRadioButtonId() != -1) {
-                        saveAnswer();
-                        position--;
-                        fillForm();
-                    }
-                }
-            }
-        );
+        previous.setOnClickListener(this::prevBtn);
     }
 
     @Override
@@ -138,6 +114,24 @@ public class ExamActivity extends AppCompatActivity {
         Log.d(TAG, "onRestoreInstanceState" + "    Rotation count - " + scrRotationCount);
     }
 
+    private void nextBtn(View view) {
+        final RadioGroup variants = findViewById(R.id.variants);
+        if (variants.getCheckedRadioButtonId() != -1) {
+            saveAnswer();
+            showAnswer();
+            position++;
+            fillForm();
+        }
+    }
+
+    private void prevBtn(View view) {
+        final RadioGroup variants = findViewById(R.id.variants);
+        if (variants.getCheckedRadioButtonId() != -1) {
+            saveAnswer();
+            position--;
+            fillForm();
+        }
+    }
 
     private void fillForm() {
         findViewById(R.id.previous).setEnabled(position != 0);
