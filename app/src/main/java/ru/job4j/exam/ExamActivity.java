@@ -24,29 +24,7 @@ public class ExamActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     private static int scrRotationCount = 0;
     private int position = 0;
-    private final List<Question> questions = Arrays.asList(
-            new Question(
-                    1, "1. How many primitive variables does Java have?",
-                    Arrays.asList(
-                            new Option(1, "1.1"), new Option(2, "1.2"),
-                            new Option(3, "1.3"), new Option(4, "1.4")
-                    ), 4
-            ),
-            new Question(
-                    2, "2. What is Java Virtual Machine?",
-                    Arrays.asList(
-                            new Option(1, "2.1"), new Option(2, "2.2"),
-                            new Option(3, "2.3"), new Option(4, "2.4")
-                    ), 4
-            ),
-            new Question(
-                    3, "3. What is happen if we try unboxing null?",
-                    Arrays.asList(
-                            new Option(1, "3.1"), new Option(2, "3.2"),
-                            new Option(3, "3.3"), new Option(4, "3.4")
-                    ), 4
-            )
-    );
+    private final QuestionStore store = QuestionStore.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,20 +75,12 @@ public class ExamActivity extends AppCompatActivity {
         super.onSaveInstanceState(outState);
         outState.putInt("screenRotation", scrRotationCount);
         outState.putInt("position", position);
-        for (Question question: questions) {
-            outState.putInt("question" + question.getId(), question.getUserAnswer());
-            Log.d(TAG, "onSaveInstanceState" + "question" + question.getId() + "  " + question.getUserAnswer());
-        }
         Log.d(TAG, "onSaveInstanceState" + "    Rotation count - " + scrRotationCount);
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        for (Question question: questions) {
-            question.setUserAnswer(savedInstanceState.getInt("question" + question.getId()));
-            Log.d(TAG, "onRestoreInstanceState" + "question" + question.getId() + "  " + savedInstanceState.getInt("question" + question.getId()));
-        }
         Log.d(TAG, "onRestoreInstanceState" + "    Rotation count - " + scrRotationCount);
     }
 
@@ -135,9 +105,9 @@ public class ExamActivity extends AppCompatActivity {
 
     private void fillForm() {
         findViewById(R.id.previous).setEnabled(position != 0);
-        findViewById(R.id.next).setEnabled(position != questions.size() - 1);
+        findViewById(R.id.next).setEnabled(position != store.size() - 1);
         final TextView text = findViewById(R.id.question);
-        Question question = this.questions.get(this.position);
+        Question question = this.store.get(this.position);
         text.setText(question.getText());
         RadioGroup variants = findViewById(R.id.variants);
         for (int index = 0; index != variants.getChildCount(); index++) {
@@ -152,7 +122,7 @@ public class ExamActivity extends AppCompatActivity {
     private void showAnswer() {
         RadioGroup variants = findViewById(R.id.variants);
         int id = variants.getCheckedRadioButtonId();
-        Question question = this.questions.get(this.position);
+        Question question = this.store.get(this.position);
         Toast.makeText(
                 this, "Your answer is " + id + ", correct is " + question.getAnswer(),
                 Toast.LENGTH_SHORT
@@ -160,7 +130,7 @@ public class ExamActivity extends AppCompatActivity {
     }
 
     private void saveAnswer() {
-        Question question = this.questions.get(this.position);
+        Question question = this.store.get(this.position);
         RadioGroup variants = findViewById(R.id.variants);
         question.setUserAnswer(variants.getCheckedRadioButtonId());
     }
