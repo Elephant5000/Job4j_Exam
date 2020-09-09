@@ -22,7 +22,7 @@ import java.util.List;
 public class ExamActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
-    private static int scrRotationCount = 0;
+    private int scrRotationCount = 0;
     private int position = 0;
     private final QuestionStore store = QuestionStore.getInstance();
 
