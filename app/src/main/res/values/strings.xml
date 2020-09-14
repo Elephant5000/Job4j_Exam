@@ -49,4 +49,6 @@
     </string-array>
     <string name="Help">Подсказка</string>
     <string name="back">Назад</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
