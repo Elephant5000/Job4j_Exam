@@ -1,23 +1,32 @@
-package ru.job4j.exam;
-
-import androidx.appcompat.app.AppCompatActivity;
+package ru.job4j.exam.resultactivity;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class ResultActivity extends AppCompatActivity {
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
+import java.util.Objects;
+
+import ru.job4j.exam.QuestionStore;
+import ru.job4j.exam.R;
+
+public class ResultFragment extends Fragment {
 
     private final QuestionStore store = QuestionStore.getInstance();
 
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.result_activity);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View viewResultFragment = inflater.inflate(R.layout.result_activity, container, false);
 
-        LinearLayout linearLayoutVertical = findViewById(R.id.linearLayoutVertical);
+        LinearLayout linearLayoutVertical = viewResultFragment.findViewById(R.id.linearLayoutVertical);
 
         for (int index = 0; index < store.size(); index ++) {
             View view = getLayoutInflater().inflate(R.layout.result_question_item, null);
@@ -37,9 +46,12 @@ public class ResultActivity extends AppCompatActivity {
         Button button = view.findViewById(R.id.back);
         linearLayoutVertical.addView(view);
         button.setOnClickListener(this::backBtn);
+
+        return viewResultFragment;
     }
 
     private void backBtn(View view) {
-        onBackPressed();
+        Objects.requireNonNull(getActivity()).onBackPressed();
     }
+
 }
