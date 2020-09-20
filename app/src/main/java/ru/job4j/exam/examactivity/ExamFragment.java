@@ -25,7 +25,7 @@ import ru.job4j.exam.resultactivity.ResultActivity;
 
 public class ExamFragment extends Fragment {
 
-    private int position = 0;
+
     private final QuestionStore store = QuestionStore.getInstance();
     private View viewExamFragment = null;
 
@@ -33,7 +33,7 @@ public class ExamFragment extends Fragment {
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putInt("position", position);
+        outState.putInt("position", store.getPosition());
     }
 
     @Override
@@ -41,7 +41,7 @@ public class ExamFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         viewExamFragment = inflater.inflate(R.layout.exam_activity, container, false);
-        position = (savedInstanceState == null) ? 0: savedInstanceState.getInt("position");
+        store.setPosition((savedInstanceState == null) ? 0: savedInstanceState.getInt("position"));
         this.fillForm();
         final Button next = viewExamFragment.findViewById(R.id.next);
         next.setOnClickListener(this::nextBtn);
@@ -56,9 +56,9 @@ public class ExamFragment extends Fragment {
         final RadioGroup variants = viewExamFragment.findViewById(R.id.variants);
         if (variants.getCheckedRadioButtonId() != -1) {
             saveAnswer();
-            if (position < store.size() - 1) {
+            if (store.getPosition() < store.size() - 1) {
                 showAnswer();
-                position++;
+                store.IncPosition();
                 fillForm();
             } else {
                 Intent intent = new Intent(getActivity(), ResultActivity.class);
@@ -71,20 +71,20 @@ public class ExamFragment extends Fragment {
         final RadioGroup variants = viewExamFragment.findViewById(R.id.variants);
         if (variants.getCheckedRadioButtonId() != -1) {
             saveAnswer();
-            position--;
+            store.DecPosition();
             fillForm();
         }
     }
 
     private void helpBtn(View view) {
         Intent intent = new Intent(getActivity(), HintActivity.class);
-        intent.putExtra(ExamActivity.HINT_FOR, position);
+        intent.putExtra(ExamActivity.HINT_FOR, store.getPosition());
         startActivity(intent);
 
     }
 
     private void saveAnswer() {
-        Question question = this.store.get(this.position);
+        Question question = this.store.get(store.getPosition());
         final RadioGroup variants = viewExamFragment.findViewById(R.id.variants);
         question.setUserAnswer(variants.getCheckedRadioButtonId());
     }
@@ -92,7 +92,7 @@ public class ExamFragment extends Fragment {
     private void showAnswer() {
         final RadioGroup variants = viewExamFragment.findViewById(R.id.variants);
         int id = variants.getCheckedRadioButtonId();
-        Question question = this.store.get(this.position);
+        Question question = this.store.get(store.getPosition());
         Toast.makeText(
                 getContext(), "Your answer is " + id + ", correct is " + question.getAnswer(),
                 Toast.LENGTH_SHORT
@@ -100,9 +100,9 @@ public class ExamFragment extends Fragment {
     }
 
     private void fillForm() {
-        viewExamFragment.findViewById(R.id.previous).setEnabled(position != 0);
+        viewExamFragment.findViewById(R.id.previous).setEnabled(store.getPosition() != 0);
         final TextView text = viewExamFragment.findViewById(R.id.question);
-        final Question question = this.store.get(this.position);
+        final Question question = this.store.get(store.getPosition());
         text.setText(question.getText());
         final RadioGroup variants = viewExamFragment.findViewById(R.id.variants);
         for (int index = 0; index != variants.getChildCount(); index++) {

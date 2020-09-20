@@ -9,8 +9,10 @@ import java.util.ArrayList;
 
 public final class QuestionStore {
     private List<Question> questions = new ArrayList<Question>();
+    private int position = 0;
 
     private static final QuestionStore INST = new QuestionStore();
+
 
     private QuestionStore() {
         questions.add(new Question(
@@ -46,6 +48,22 @@ public final class QuestionStore {
 
     public Question get(int position) {
         return questions.get(position);
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
+    }
+
+    public void IncPosition() {
+        this.position++;
+    }
+
+    public void DecPosition() {
+        this.position--;
     }
 
     public int size() {
