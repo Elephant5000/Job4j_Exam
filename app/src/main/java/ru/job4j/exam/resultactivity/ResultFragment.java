@@ -1,5 +1,6 @@
 package ru.job4j.exam.resultactivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,8 +15,10 @@ import androidx.fragment.app.Fragment;
 
 import java.util.Objects;
 
+import ru.job4j.exam.ExamsActivity;
 import ru.job4j.exam.QuestionStore;
 import ru.job4j.exam.R;
+import ru.job4j.exam.examactivity.ExamActivity;
 
 public class ResultFragment extends Fragment {
 
@@ -42,10 +45,15 @@ public class ResultFragment extends Fragment {
             linearLayoutVertical.addView(view);
         }
 
-        View view = getLayoutInflater().inflate(R.layout.back_button, null);
-        Button button = view.findViewById(R.id.back);
-        linearLayoutVertical.addView(view);
-        button.setOnClickListener(this::backBtn);
+        View viewBack = getLayoutInflater().inflate(R.layout.back_button, null);
+        Button backBtn = viewBack.findViewById(R.id.back);
+        linearLayoutVertical.addView(viewBack);
+        backBtn.setOnClickListener(this::backBtn);
+
+        View viewExamsList = getLayoutInflater().inflate(R.layout.exams_list_button, null);
+        Button examsListBtn = viewExamsList.findViewById(R.id.examsList);
+        linearLayoutVertical.addView(viewExamsList);
+        examsListBtn.setOnClickListener(this::examsListBtn);
 
         return viewResultFragment;
     }
@@ -54,4 +62,9 @@ public class ResultFragment extends Fragment {
         Objects.requireNonNull(getActivity()).onBackPressed();
     }
 
+    private void examsListBtn(View view) {
+        Intent intent = new Intent(getActivity(), ExamsActivity.class);
+        intent.putExtra(ExamActivity.HINT_FOR, store.getPosition());
+        startActivity(intent);
+    }
 }

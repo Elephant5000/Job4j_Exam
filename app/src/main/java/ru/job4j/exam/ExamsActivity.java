@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ru.job4j.exam.examactivity.ExamActivity;
+import ru.job4j.exam.hintactivity.HintActivity;
 
 
 public class ExamsActivity extends AppCompatActivity {
@@ -54,7 +55,6 @@ public class ExamsActivity extends AppCompatActivity {
             this.exams = exams;
         }
 
-
         @NonNull
         @Override
         public ExamHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -77,8 +77,8 @@ public class ExamsActivity extends AppCompatActivity {
             examName.setOnClickListener(
                 v -> {
                     //Toast.makeText(holder.view.getContext(), "You select " + exam, Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(ExamsActivity.this, ExamActivity.class);
-                    //intent.putExtra(ExamActivity.HINT_FOR, store.getPosition());
+                    Intent intent = new Intent(getApplicationContext(), ExamActivity.class);
+                    //intent.putExtra(ExamActivity.HINT_FOR, position);
                     startActivity(intent);
                 }
             );

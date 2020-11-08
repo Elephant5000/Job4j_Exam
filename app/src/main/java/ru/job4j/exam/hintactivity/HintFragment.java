@@ -36,7 +36,7 @@ public class HintFragment extends Fragment {
 
         hintTextView.setText(this.answer.get(question));
         questionTextView.setText(store.get(question).getText());
-        Button back = viewHintFragment.findViewById(R.id.back);
+        Button back = viewHintFragment.findViewById(R.id.examsList);
         back.setOnClickListener(this::backBtn);
         return viewHintFragment;
     }

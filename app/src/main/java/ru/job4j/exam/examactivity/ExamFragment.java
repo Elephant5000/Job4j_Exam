@@ -10,11 +10,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import ru.job4j.exam.ExamsActivity;
 import ru.job4j.exam.Option;
 import ru.job4j.exam.Question;
 import ru.job4j.exam.QuestionStore;
@@ -49,6 +51,17 @@ public class ExamFragment extends Fragment {
         previous.setOnClickListener(this::prevBtn);
         final Button help = viewExamFragment.findViewById(R.id.help);
         help.setOnClickListener(this::helpBtn);
+
+        //final Button examsList = viewExamFragment.findViewById(R.id.examList);
+        //examsList.setOnClickListener(this::examsListBtn);
+
+        LinearLayout linearLayoutVertical = viewExamFragment.findViewById(R.id.linearLayoutVertical);
+        View viewExamsList = getLayoutInflater().inflate(R.layout.exams_list_button, null);
+        Button examsListBtn = viewExamsList.findViewById(R.id.examsList);
+        linearLayoutVertical.addView(viewExamsList);
+        examsListBtn.setOnClickListener(this::examsListBtn);
+
+
         return viewExamFragment;
     }
 
@@ -81,6 +94,12 @@ public class ExamFragment extends Fragment {
         intent.putExtra(ExamActivity.HINT_FOR, store.getPosition());
         startActivity(intent);
 
+    }
+
+    private void examsListBtn(View view) {
+        Intent intent = new Intent(getActivity(), ExamsActivity.class);
+        intent.putExtra(ExamActivity.HINT_FOR, store.getPosition());
+        startActivity(intent);
     }
 
     private void saveAnswer() {

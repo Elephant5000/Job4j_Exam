@@ -10,6 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".BaseActivity"></activity>
+        <activity android:name=".examactivity.ExamActivity" />
         <activity android:name=".resultactivity.ResultActivity" />
         <activity android:name=".hintactivity.HintActivity" />
         <activity android:name=".ExamsActivity">
